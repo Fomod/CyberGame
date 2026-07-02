@@ -1,0 +1,15 @@
+{
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "host": "cybergame.ai",
+  "key": "69fc1179fb42f7ad3c2127723ca8b934",
+  "keyLocation": "https://cybergame.ai/69fc1179fb42f7ad3c2127723ca8b934.txt",
+  "urlList": [
+    "https://cybergame.ai/",
+    "https://cybergame.ai/privacy.html",
+    "https://cybergame.ai/llms.txt",
+    "https://cybergame.ai/ai.txt",
+    "https://cybergame.ai/.well-known/llms.txt",
+    "https://cybergame.ai/.well-known/ai.txt",
+    "https://cybergame.ai/sitemap.xml"
+  ]
+}

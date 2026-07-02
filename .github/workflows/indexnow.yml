@@ -1,0 +1,73 @@
+name: Notify IndexNow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v7
+
+      - name: Wait for GitHub Pages propagation
+        if: github.event_name == 'push'
+        run: sleep 180
+
+      - name: Submit canonical URLs to IndexNow
+        run: |
+          node <<'NODE'
+          const fs = require("fs");
+
+          (async () => {
+            const data = JSON.parse(fs.readFileSync("indexnow-urls.json", "utf8"));
+            const endpoint = data.endpoint || "https://api.indexnow.org/indexnow";
+            const payload = {
+              host: data.host,
+              key: data.key,
+              keyLocation: data.keyLocation,
+              urlList: data.urlList,
+            };
+
+            if (!payload.host || !payload.key || !payload.keyLocation || !Array.isArray(payload.urlList)) {
+              throw new Error("indexnow-urls.json is missing host, key, keyLocation, or urlList");
+            }
+            if (!payload.urlList.length) {
+              throw new Error("indexnow-urls.json has an empty urlList");
+            }
+            if (payload.urlList.length > 10000) {
+              throw new Error(`IndexNow urlList has ${payload.urlList.length} URLs; split before submitting`);
+            }
+            if (process.env.INDEXNOW_DRY_RUN === "1") {
+              console.log(`Dry run: prepared ${payload.urlList.length} URLs for ${payload.host}`);
+              return;
+            }
+
+            const response = await fetch(endpoint, {
+              method: "POST",
+              headers: { "content-type": "application/json; charset=utf-8" },
+              body: JSON.stringify(payload),
+            });
+            const text = await response.text();
+            console.log(`IndexNow response: ${response.status} ${response.statusText}`);
+            if (text) console.log(text);
+
+            if (![200, 202].includes(response.status)) {
+              throw new Error(`IndexNow submission failed with HTTP ${response.status}`);
+            }
+            console.log(`Submitted ${payload.urlList.length} URLs for ${payload.host}`);
+          })().catch((error) => {
+            console.error(error);
+            process.exit(1);
+          });
+          NODE
