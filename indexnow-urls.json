@@ -10,6 +10,7 @@
     "https://cybergame.ai/ai.txt",
     "https://cybergame.ai/.well-known/llms.txt",
     "https://cybergame.ai/.well-known/ai.txt",
+    "https://cybergame.ai/indexnow-urls.json",
     "https://cybergame.ai/sitemap.xml"
   ]
 }
