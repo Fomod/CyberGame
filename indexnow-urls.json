@@ -8,8 +8,10 @@
     "https://cybergame.ai/privacy.html",
     "https://cybergame.ai/llms.txt",
     "https://cybergame.ai/ai.txt",
+    "https://cybergame.ai/agents.txt",
     "https://cybergame.ai/.well-known/llms.txt",
     "https://cybergame.ai/.well-known/ai.txt",
+    "https://cybergame.ai/.well-known/agents.txt",
     "https://cybergame.ai/indexnow-urls.json",
     "https://cybergame.ai/sitemap.xml"
   ]

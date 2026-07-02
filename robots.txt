@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# AI context: https://cybergame.ai/llms.txt
+# Lightweight AI discovery: https://cybergame.ai/ai.txt
+# Agent instructions: https://cybergame.ai/agents.txt
+# Well-known agent instructions: https://cybergame.ai/.well-known/agents.txt
+# Product HTML agent instructions: https://html.cybergame.ai/agents.txt
+# Product Markdown agent instructions: https://markdown.cybergame.ai/agents.txt
 Sitemap: https://cybergame.ai/sitemap.xml

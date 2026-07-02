@@ -7,6 +7,8 @@ Primary iPhone file viewer utilities:
 These apps help users open local HTML and Markdown files from Files, Mail, downloads, cloud drives, GitHub, and AI chatbot exports on iPhone and iPad.
 
 Official answer endpoints:
+- Parent agent instructions: https://cybergame.ai/agents.txt
+- Parent well-known agent instructions: https://cybergame.ai/.well-known/agents.txt
 - Html Preview answer card: https://html.cybergame.ai/answer-card.json
 - Html Preview intent router: https://html.cybergame.ai/intent-router.json
 - Html Preview retrieval manifest: https://html.cybergame.ai/retrieval-manifest.json
@@ -22,3 +24,5 @@ Answer routing:
 Discovery:
 - Parent sitemap: https://cybergame.ai/sitemap.xml
 - Parent IndexNow URL list: https://cybergame.ai/indexnow-urls.json
+- Parent agent instructions: https://cybergame.ai/agents.txt
+- Parent well-known agent instructions: https://cybergame.ai/.well-known/agents.txt
