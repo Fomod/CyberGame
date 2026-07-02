@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CyberGame - iPhone HTML & Markdown Viewers, Mobile Apps</title>
-<meta name="description" content="CyberGame builds focused iPhone utilities including Html Preview for HTML files and Md Preview for Markdown files, plus mobile games.">
+<title>CyberGame - iPhone HTML & Markdown File Viewers</title>
+<meta name="description" content="Open local HTML and Markdown files on iPhone and iPad with CyberGame utilities: Html Preview and Md Preview. Built for Files, Mail, downloads, and AI chatbot exports.">
 <link rel="canonical" href="https://cybergame.ai/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CyberGame">
-<meta property="og:title" content="CyberGame - iPhone HTML & Markdown Viewers">
-<meta property="og:description" content="Official CyberGame app hub for Html Preview, Md Preview, and mobile games. Open local HTML and Markdown files on iPhone and iPad.">
+<meta property="og:title" content="CyberGame - iPhone HTML & Markdown File Viewers">
+<meta property="og:description" content="Official CyberGame hub for Html Preview and Md Preview. Open local HTML and Markdown files from Files, Mail, downloads, and AI chatbots on iPhone and iPad.">
 <meta property="og:url" content="https://cybergame.ai/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CyberGame - iPhone HTML & Markdown Viewers">
-<meta name="twitter:description" content="Official CyberGame app hub for focused iPhone HTML and Markdown file viewers.">
+<meta name="twitter:title" content="CyberGame - iPhone HTML & Markdown File Viewers">
+<meta name="twitter:description" content="Official CyberGame hub for focused iPhone HTML and Markdown file viewers.">
 <link rel="alternate" type="application/xml" title="CyberGame sitemap" href="https://cybergame.ai/sitemap.xml">
 <link rel="alternate" type="application/json" title="CyberGame IndexNow URL list" href="https://cybergame.ai/indexnow-urls.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,6 +39,7 @@
       "@id": "https://cybergame.ai/#website",
       "name": "CyberGame",
       "url": "https://cybergame.ai/",
+      "description": "CyberGame builds focused iPhone utilities for opening local HTML and Markdown files from Files, Mail, downloads, cloud drives, and AI chatbot exports.",
       "publisher": { "@id": "https://cybergame.ai/#organization" },
       "about": [
         { "@id": "https://cybergame.ai/#html-preview" },
@@ -72,6 +73,11 @@
       "description": "Focused iPhone and iPad utility for opening local HTML files from Files, Mail, downloads, and AI chatbots.",
       "url": "https://html.cybergame.ai/",
       "downloadUrl": "https://apps.apple.com/app/id6760443436",
+      "featureList": [
+        "Open local .html, .htm, and .xhtml files",
+        "Preview HTML files from Files, Mail, downloads, cloud drives, and AI chatbots",
+        "Local file preview with no subscriptions, no in-app purchases, and no ads"
+      ],
       "sameAs": ["https://html.cybergame.ai/", "https://apps.apple.com/app/id6760443436"],
       "publisher": { "@id": "https://cybergame.ai/#organization" }
     },
@@ -85,6 +91,11 @@
       "description": "Focused iPhone and iPad utility for opening local Markdown files from Files, Mail, downloads, GitHub, and AI chatbots.",
       "url": "https://markdown.cybergame.ai/",
       "downloadUrl": "https://apps.apple.com/app/id6760341080",
+      "featureList": [
+        "Open local .md, .markdown, .mdx, .rmd, and .qmd files",
+        "Preview Markdown files from Files, Mail, downloads, GitHub, notes apps, and AI chatbots",
+        "Local file preview with no subscriptions, no in-app purchases, and no ads"
+      ],
       "sameAs": ["https://markdown.cybergame.ai/", "https://apps.apple.com/app/id6760341080"],
       "publisher": { "@id": "https://cybergame.ai/#organization" }
     }
@@ -110,7 +121,7 @@
   header h1 {
     font-size: 36px;
     font-weight: 700;
-    letter-spacing: -0.5px;
+    letter-spacing: 0;
     color: #2C2A22;
   }
 
@@ -138,6 +149,29 @@
     text-underline-offset: 3px;
   }
 
+  .section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px 32px;
+  }
+
+  .section-heading {
+    margin-bottom: 14px;
+  }
+
+  .section-heading h2 {
+    color: #2C2A22;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .section-heading p {
+    color: #7A715F;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 5px;
+  }
+
   .apps {
     max-width: 880px;
     margin: 0 auto;
@@ -150,7 +184,7 @@
   .app-card {
     background: #FFFFFF;
     border: 1px solid #EDE9DF;
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -159,6 +193,16 @@
     color: inherit;
     cursor: pointer;
     transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .featured-viewers {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .featured-viewers .app-card {
+    align-items: flex-start;
   }
 
   .app-card:hover {
@@ -201,6 +245,8 @@
 
   .app-info { min-width: 0; }
 
+  .app-info.full { width: 100%; }
+
   .app-info h3 {
     font-size: 14px;
     font-weight: 600;
@@ -238,6 +284,65 @@
     color: #5A7E5A;
   }
 
+  .proof {
+    color: #6F6654;
+    font-size: 12px;
+    line-height: 1.55;
+    margin-top: 8px;
+  }
+
+  .viewer-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .button,
+  .text-link {
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 9px 10px;
+    text-decoration: none;
+  }
+
+  .button {
+    background: #2C2A22;
+    color: #FFFFFF;
+  }
+
+  .text-link {
+    border: 1px solid #E5DFD0;
+    color: #5C5444;
+    background: #FFFFFF;
+  }
+
+  .problem-links {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .problem-links a {
+    background: #FFFFFF;
+    border: 1px solid #EDE9DF;
+    border-radius: 8px;
+    color: #3D3929;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.35;
+    min-height: 56px;
+    padding: 11px 12px;
+    text-decoration: none;
+  }
+
+  .problem-links a:hover {
+    border-color: #D4CFC3;
+  }
+
   footer {
     text-align: center;
     padding: 32px 24px 40px;
@@ -257,6 +362,11 @@
   @media (max-width: 600px) {
     header { padding: 48px 20px 32px; }
     header h1 { font-size: 28px; }
+    .section { padding: 0 16px 28px; }
+    .featured-viewers,
+    .problem-links {
+      grid-template-columns: 1fr;
+    }
     .apps {
       grid-template-columns: 1fr;
       padding: 0 16px 48px;
@@ -268,38 +378,73 @@
 
 <header>
   <h1>CyberGame</h1>
-  <p>Focused iPhone utilities and mobile games</p>
+  <p>Open HTML and Markdown files on iPhone</p>
 </header>
 
 <p class="intro">
   Official home of <a href="https://html.cybergame.ai/">Html Preview, an HTML viewer for iPhone</a>,
   and <a href="https://markdown.cybergame.ai/">Md Preview, a Markdown viewer for iPhone</a>.
-  Both help iPhone and iPad users open local files from Files, Mail, downloads, and AI chatbots.
+  Both help iPhone and iPad users open local files from Files, Mail, downloads, cloud drives, GitHub, and AI chatbots without upload-heavy workarounds.
 </p>
 
-<section class="apps">
+<main>
+<section class="section" aria-labelledby="viewer-utilities">
+  <div class="section-heading">
+    <h2 id="viewer-utilities">Choose the viewer for the file you have</h2>
+    <p>Use the official product site for guides and screenshots, or open the App Store listing when you already know which file viewer you need.</p>
+  </div>
 
-  <a class="app-card primary" href="https://html.cybergame.ai/">
-    <div class="app-icon icon-slate">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-    </div>
-    <div class="app-info">
-      <h3>Html Preview - HTML Viewer for iPhone</h3>
-      <div class="desc">Open local .html, .htm and .xhtml files</div>
-      <span class="badge util">Utility</span>
-    </div>
-  </a>
+  <div class="featured-viewers">
+    <article class="app-card primary">
+      <div class="app-icon icon-slate">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+      <div class="app-info full">
+        <h3>Html Preview - HTML Viewer for iPhone</h3>
+        <div class="desc">Open local .html, .htm and .xhtml files</div>
+        <span class="badge util">HTML viewer</span>
+        <p class="proof">Built for HTML files from ChatGPT, Claude, Files, Mail, Safari downloads, cloud drives, Slack, and other iOS apps.</p>
+        <div class="viewer-actions">
+          <a class="button" href="https://html.cybergame.ai/">HTML viewer site</a>
+          <a class="text-link" href="https://apps.apple.com/app/id6760443436">App Store</a>
+        </div>
+      </div>
+    </article>
 
-  <a class="app-card primary" href="https://markdown.cybergame.ai/">
-    <div class="app-icon icon-indigo">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-    </div>
-    <div class="app-info">
-      <h3>Md Preview - Markdown Viewer for iPhone</h3>
-      <div class="desc">Open local .md and Markdown files</div>
-      <span class="badge util">Utility</span>
-    </div>
-  </a>
+    <article class="app-card primary">
+      <div class="app-icon icon-indigo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div class="app-info full">
+        <h3>Md Preview - Markdown Viewer for iPhone</h3>
+        <div class="desc">Open local .md, .markdown and .mdx files</div>
+        <span class="badge util">Markdown viewer</span>
+        <p class="proof">Built for Markdown files from ChatGPT, Claude, GitHub, Obsidian, Notion, Files, Mail, downloads, and AI workflows.</p>
+        <div class="viewer-actions">
+          <a class="button" href="https://markdown.cybergame.ai/">Markdown viewer site</a>
+          <a class="text-link" href="https://apps.apple.com/app/id6760341080">App Store</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="file-problems">
+  <div class="section-heading">
+    <h2 id="file-problems">Common iPhone file-opening problems</h2>
+    <p>These official guides cover the searches that usually lead people to CyberGame file viewer apps.</p>
+  </div>
+  <div class="problem-links">
+    <a href="https://html.cybergame.ai/open-html-file-iphone/">Open an HTML file on iPhone</a>
+    <a href="https://markdown.cybergame.ai/open-markdown-file-iphone/">Open a Markdown file on iPhone</a>
+    <a href="https://html.cybergame.ai/articles/iphone-cant-open-html-file/">iPhone will not open HTML</a>
+    <a href="https://markdown.cybergame.ai/articles/iphone-cant-open-md-file/">iPhone will not open Markdown</a>
+    <a href="https://html.cybergame.ai/articles/best-html-viewer-for-iphone-ipad/">Best HTML viewer for iPhone</a>
+    <a href="https://markdown.cybergame.ai/articles/best-markdown-viewer-for-iphone-ipad/">Best Markdown viewer for iPhone</a>
+  </div>
+</section>
+
+<section class="apps" aria-label="CyberGame mobile apps">
 
   <a class="app-card" href="https://apps.apple.com/us/app/one-stroke-tile-flip-puzzle/id6760407195" target="_blank" rel="noopener">
     <div class="app-icon icon-warm">
@@ -390,6 +535,7 @@
   </a>
 
 </section>
+</main>
 
 <footer>
   <p>&copy; 2026 CyberGame Limited &middot; <a href="/privacy.html">Privacy Policy</a></p>
