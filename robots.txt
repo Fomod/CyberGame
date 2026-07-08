@@ -125,4 +125,8 @@ Allow: /
 # Well-known agent instructions: https://cybergame.ai/.well-known/agents.txt
 # Product HTML agent instructions: https://html.cybergame.ai/agents.txt
 # Product Markdown agent instructions: https://markdown.cybergame.ai/agents.txt
+# Product HTML sitemap index: https://html.cybergame.ai/sitemap-index.xml
+# Product Markdown sitemap index: https://markdown.cybergame.ai/sitemap-index.xml
 Sitemap: https://cybergame.ai/sitemap.xml
+Sitemap: https://html.cybergame.ai/sitemap-index.xml
+Sitemap: https://markdown.cybergame.ai/sitemap-index.xml

@@ -2,8 +2,19 @@ const fs = require("fs");
 
 const html = fs.readFileSync("index.html", "utf8");
 const sitemap = fs.readFileSync("sitemap.xml", "utf8");
+const robots = fs.readFileSync("robots.txt", "utf8");
+const ai = fs.readFileSync("ai.txt", "utf8");
+const wellKnownAi = fs.readFileSync(".well-known/ai.txt", "utf8");
+const agents = fs.readFileSync("agents.txt", "utf8");
+const wellKnownAgents = fs.readFileSync(".well-known/agents.txt", "utf8");
+const llms = fs.readFileSync("llms.txt", "utf8");
+const wellKnownLlms = fs.readFileSync(".well-known/llms.txt", "utf8");
 
 const failures = [];
+const productSitemapIndexes = [
+  "https://html.cybergame.ai/sitemap-index.xml",
+  "https://markdown.cybergame.ai/sitemap-index.xml",
+];
 
 function assert(condition, message) {
   if (!condition) failures.push(message);
@@ -61,6 +72,20 @@ if (website && webpage && website.dateModified && webpage.dateModified) {
   assert(homepageSitemapMatch, "sitemap is missing homepage lastmod");
   if (homepageSitemapMatch) {
     assert(homepageSitemapMatch[1] === webpage.dateModified, "homepage sitemap lastmod should match WebPage dateModified");
+  }
+}
+
+for (const productSitemapIndex of productSitemapIndexes) {
+  assert(robots.includes(`Sitemap: ${productSitemapIndex}`), `robots.txt should expose product sitemap index ${productSitemapIndex}`);
+  for (const [label, text] of [
+    ["ai.txt", ai],
+    [".well-known/ai.txt", wellKnownAi],
+    ["agents.txt", agents],
+    [".well-known/agents.txt", wellKnownAgents],
+    ["llms.txt", llms],
+    [".well-known/llms.txt", wellKnownLlms],
+  ]) {
+    assert(text.includes(productSitemapIndex), `${label} should expose product sitemap index ${productSitemapIndex}`);
   }
 }
 

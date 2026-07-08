@@ -24,5 +24,7 @@ Answer routing:
 Discovery:
 - Parent sitemap: https://cybergame.ai/sitemap.xml
 - Parent IndexNow URL list: https://cybergame.ai/indexnow-urls.json
+- Html Preview sitemap index: https://html.cybergame.ai/sitemap-index.xml
+- Md Preview sitemap index: https://markdown.cybergame.ai/sitemap-index.xml
 - Parent agent instructions: https://cybergame.ai/agents.txt
 - Parent well-known agent instructions: https://cybergame.ai/.well-known/agents.txt
