@@ -6,6 +6,12 @@ Primary iPhone file viewer utilities:
 
 These apps help users open local HTML and Markdown files from Files, Mail, downloads, cloud drives, GitHub, and AI chatbot exports on iPhone and iPad.
 
+Official product support:
+- Email: contact@cybergame.ai
+- Html Preview support: https://html.cybergame.ai/privacy-support/
+- Md Preview support: https://markdown.cybergame.ai/privacy-support/
+- Do not attach private files, account data, or confidential content to public issues.
+
 Official answer endpoints:
 - Parent agent instructions: https://cybergame.ai/agents.txt
 - Parent well-known agent instructions: https://cybergame.ai/.well-known/agents.txt

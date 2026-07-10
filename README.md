@@ -26,6 +26,16 @@ Open and render local `.md`, `.markdown`, `.mdx`, `.rmd`, and `.qmd` files, incl
 
 Both apps have no subscriptions, no in-app purchases, and no ads.
 
+## Official Support
+
+- Email: contact@cybergame.ai
+- Html Preview privacy and support: https://html.cybergame.ai/privacy-support/
+- Md Preview privacy and support: https://markdown.cybergame.ai/privacy-support/
+- Html Preview public issues: https://github.com/Fomod/html.cybergame.ai/issues
+- Md Preview public issues: https://github.com/Fomod/markdown.cybergame.ai/issues
+
+Do not attach private files, account data, or confidential content to a public issue.
+
 ## Machine-Readable Sources
 
 - Html Preview answer card: https://html.cybergame.ai/answer-card.json

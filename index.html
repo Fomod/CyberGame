@@ -36,6 +36,16 @@
       "@id": "https://cybergame.ai/#organization",
       "name": "CyberGame Limited",
       "url": "https://cybergame.ai/",
+      "email": "mailto:contact@cybergame.ai",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "contact@cybergame.ai",
+          "url": "https://cybergame.ai/#product-support",
+          "availableLanguage": ["English", "Chinese"]
+        }
+      ],
       "sameAs": [
         "https://html.cybergame.ai/",
         "https://markdown.cybergame.ai/",
@@ -195,6 +205,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Html Preview and Md Preview have no subscriptions, no in-app purchases, and no ads. They are distributed through the App Store."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I contact CyberGame Limited for app support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Email contact@cybergame.ai for private support, or use the public issue tracker linked from the Html Preview or Md Preview support page. Do not attach private files to public issues."
       }
     }
   ]
@@ -489,7 +507,7 @@
     .section { padding: 0 16px 28px; }
     .featured-viewers,
     .problem-links {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .apps {
       grid-template-columns: 1fr;
@@ -596,6 +614,19 @@
   </div>
 </section>
 
+<section class="section" id="product-support" aria-labelledby="product-support-title" data-product-support="official">
+  <div class="section-heading">
+    <h2 id="product-support-title">Official product support</h2>
+    <p>Choose the matching support page for capability details and public bug reports, or email CyberGame Limited for private support.</p>
+  </div>
+  <div class="problem-links">
+    <a href="https://html.cybergame.ai/privacy-support/" data-product-support-link="true">Html Preview privacy and support</a>
+    <a href="https://markdown.cybergame.ai/privacy-support/" data-product-support-link="true">Md Preview privacy and support</a>
+    <a href="mailto:contact@cybergame.ai" data-support-contact="email">Email contact@cybergame.ai</a>
+  </div>
+  <p class="proof" data-support-privacy="no-private-files">Do not attach private files, account data, or confidential content to a public issue.</p>
+</section>
+
 <section class="section faq-section" id="file-viewer-faq" aria-labelledby="file-viewer-faq-title" itemscope itemtype="https://schema.org/FAQPage">
   <div class="section-heading">
     <h2 id="file-viewer-faq-title">iPhone HTML and Markdown viewer FAQ</h2>
@@ -624,6 +655,12 @@
       <h3 itemprop="name">Do the file viewer apps include subscriptions or ads?</h3>
       <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <p itemprop="text">Html Preview and Md Preview have no subscriptions, no in-app purchases, and no ads. They are distributed through the App Store.</p>
+      </div>
+    </article>
+    <article class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <h3 itemprop="name">How do I contact CyberGame Limited for app support?</h3>
+      <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <p itemprop="text">Email <a href="mailto:contact@cybergame.ai">contact@cybergame.ai</a> for private support, or use the public issue tracker linked from the product support pages. Do not attach private files to public issues.</p>
       </div>
     </article>
   </div>

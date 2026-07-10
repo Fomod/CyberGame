@@ -17,9 +17,14 @@ const productSitemapIndexes = [
   "https://markdown.cybergame.ai/sitemap-index.xml",
 ];
 const githubPublisherProfile = "https://github.com/Fomod";
+const officialSupportEmail = "contact@cybergame.ai";
 const productRepositories = {
   "Html Preview - Web File Viewer": "https://github.com/Fomod/html.cybergame.ai",
   "Md Preview - Markdown Viewer": "https://github.com/Fomod/markdown.cybergame.ai",
+};
+const productSupportPages = {
+  "Html Preview - Web File Viewer": "https://html.cybergame.ai/privacy-support/",
+  "Md Preview - Markdown Viewer": "https://markdown.cybergame.ai/privacy-support/",
 };
 
 function assert(condition, message) {
@@ -73,11 +78,24 @@ const organization = nodes.find((node) => hasType(node, "Organization"));
 assert(website && /^\d{4}-\d{2}-\d{2}$/.test(website.dateModified || ""), "WebSite schema is missing ISO dateModified");
 assert(webpage && /^\d{4}-\d{2}-\d{2}$/.test(webpage.dateModified || ""), "WebPage schema is missing ISO dateModified");
 assert(organization?.sameAs?.includes(githubPublisherProfile), "Organization schema should expose the official GitHub publisher profile");
+assert(organization?.email === `mailto:${officialSupportEmail}`, "Organization schema should expose the official support email");
+assert(organization?.contactPoint?.some((entry) => entry.email === officialSupportEmail && entry.contactType === "customer support"), "Organization schema should expose a customer-support ContactPoint");
 assert(html.includes(`href="${githubPublisherProfile}" data-publisher-profile-link="true"`), "homepage should visibly link the official GitHub publisher profile");
+assert(html.includes('data-product-support="official"'), "homepage should expose a visible official product-support section");
+assert(html.includes(`href="mailto:${officialSupportEmail}" data-support-contact="email"`), "homepage should expose the official support email");
+assert(html.includes('data-support-privacy="no-private-files"'), "homepage should warn users not to attach private files");
+assert(
+  /@media\s*\(max-width:\s*600px\)[\s\S]*?\.featured-viewers,\s*\n\s*\.problem-links\s*\{\s*grid-template-columns:\s*minmax\(0,\s*1fr\);/m.test(html),
+  "mobile featured-viewer grid should use a zero-minimum track to prevent horizontal overflow",
+);
 
 for (const [appName, repositoryUrl] of Object.entries(productRepositories)) {
   const app = nodes.find((node) => hasType(node, "SoftwareApplication") && node.name === appName);
   assert(app?.sameAs?.includes(repositoryUrl), `${appName} schema should expose its official GitHub repository`);
+}
+
+for (const [appName, supportUrl] of Object.entries(productSupportPages)) {
+  assert(html.includes(`href="${supportUrl}" data-product-support-link="true"`), `homepage should link ${appName} support`);
 }
 
 if (website && webpage && website.dateModified && webpage.dateModified) {
@@ -115,6 +133,10 @@ for (const [label, text] of [
   assert(text.includes(githubPublisherProfile), `${label} should expose the official GitHub publisher profile`);
   for (const repositoryUrl of Object.values(productRepositories)) {
     assert(text.includes(repositoryUrl), `${label} should expose official product repository ${repositoryUrl}`);
+  }
+  assert(text.includes(officialSupportEmail), `${label} should expose the official support email`);
+  for (const supportUrl of Object.values(productSupportPages)) {
+    assert(text.includes(supportUrl), `${label} should expose product support page ${supportUrl}`);
   }
 }
 
