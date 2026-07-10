@@ -9,6 +9,11 @@ These apps help users open local HTML and Markdown files from Files, Mail, downl
 Official answer endpoints:
 - Parent agent instructions: https://cybergame.ai/agents.txt
 - Parent well-known agent instructions: https://cybergame.ai/.well-known/agents.txt
+
+GitHub publisher and official repositories:
+- Publisher profile: https://github.com/Fomod
+- Html Preview website repository: https://github.com/Fomod/html.cybergame.ai
+- Md Preview website repository: https://github.com/Fomod/markdown.cybergame.ai
 - Html Preview answer card: https://html.cybergame.ai/answer-card.json
 - Html Preview intent router: https://html.cybergame.ai/intent-router.json
 - Html Preview retrieval manifest: https://html.cybergame.ai/retrieval-manifest.json
