@@ -19,12 +19,37 @@ function readPage(path) {
   return fs.readFileSync(path, "utf8");
 }
 
-function bottomContent(html) {
-  return html.slice(Math.floor(html.length * 0.75));
+function finalFooterContainsLicenseLink(html) {
+  const footerMatches = [...html.matchAll(/<footer\b[^>]*>/gi)];
+  const finalFooter = footerMatches.at(-1);
+  if (!finalFooter) return false;
+
+  const footerStart = finalFooter.index;
+  const footerEnd = html.toLowerCase().indexOf("</footer>", footerStart);
+  const linkPosition = html.indexOf(requiredLink, footerStart);
+
+  return footerEnd !== -1 && linkPosition !== -1 && linkPosition < footerEnd;
+}
+
+function privacyLinkFollowsContactInContainer(html) {
+  const containerMatch = /<div\b[^>]*\bclass=(['"])[^'"]*\bcontainer\b[^'"]*\1[^>]*>/i.exec(html);
+  if (!containerMatch) return false;
+
+  const containerStart = containerMatch.index + containerMatch[0].length;
+  const containerEnd = html.toLowerCase().indexOf("</div>", containerStart);
+  if (containerEnd === -1) return false;
+
+  const paragraphs = [...html.slice(containerStart, containerEnd).matchAll(/<p\b[^>]*>[\s\S]*?<\/p>/gi)].map((match) => match[0]);
+  const contactParagraph = paragraphs.findIndex((paragraph) => paragraph.includes("mailto:contact@cybergame.ai"));
+  const licenseParagraph = paragraphs.findIndex((paragraph) => paragraph.includes(requiredLink));
+
+  return contactParagraph !== -1
+    && licenseParagraph === contactParagraph + 1
+    && licenseParagraph === paragraphs.length - 1;
 }
 
 const licenseHtml = readPage(licensePage);
-if (licenseHtml) {
+if (licenseHtml !== null) {
   assert(
     licenseHtml.includes(`<title>${requiredTitle}</title>`),
     `${licensePage} title should be ${requiredTitle}`,
@@ -35,14 +60,20 @@ if (licenseHtml) {
   );
 }
 
-for (const sourcePage of ["index.html", "privacy.html"]) {
-  const sourceHtml = readPage(sourcePage);
-  if (sourceHtml) {
-    assert(
-      bottomContent(sourceHtml).includes(requiredLink),
-      `${sourcePage} bottom content should include ${requiredLink}`,
-    );
-  }
+const indexHtml = readPage("index.html");
+if (indexHtml !== null) {
+  assert(
+    finalFooterContainsLicenseLink(indexHtml),
+    `index.html final footer should include ${requiredLink}`,
+  );
+}
+
+const privacyHtml = readPage("privacy.html");
+if (privacyHtml !== null) {
+  assert(
+    privacyLinkFollowsContactInContainer(privacyHtml),
+    `privacy.html license link paragraph should follow the contact paragraph and be the final paragraph in the container`,
+  );
 }
 
 if (failures.length) {
