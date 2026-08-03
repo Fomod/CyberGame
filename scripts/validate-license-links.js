@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 const licensePage = "third-party-licenses.html";
-const requiredTitle = "Third-Party Licenses";
+const requiredTitle = "Third-Party Licenses - CyberGame";
 const requiredHeading = "Third-Party Licenses";
 const requiredLink = '<a href="/third-party-licenses.html">Third-Party Licenses</a>';
 const failures = [];
